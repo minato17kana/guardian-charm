@@ -71,92 +71,18 @@ font-size:25px;
 </head>
 
 <body>
-
 <h1>🏀 Guardian Charm</h1>
 
-<h2>杜真</h2>
+<h2>杜真へ</h2>
 
-<button id="start">TAP HERE</button>
+<p>3点決めると応援メッセージが届くよ❤️</p>
 
-<div id="game">
+<div id="score">0 / 3</div>
 
-<h2 id="timer">30</h2>
-
-<div id="score">0点</div>
-<div id="message"></div>
-  
 <div id="court">
-  <div style="margin-top:15px;">
-    <button onclick="leftMove()">⬅️</button>
-    <button onclick="rightMove()">➡️</button>
-  </div>
-  <canvas id="confetti" width="360" height="520"></canvas>
-
-<div id="goal">🧺</div>
-
-<div id="ball">🏀</div>
-
+    <div id="goal">🧺</div>
+    <div id="ball">🏀</div>
 </div>
-
-</div>
-
-<script>
-
-let score=0;
-let time=30;
-
-const start=document.getElementById("start");
-const game=document.getElementById("game");
-const ball=document.getElementById("ball");
-
-start.onclick=()=>{
-
-start.style.display="none";
-game.style.display="block";
-
-const countdown=setInterval(()=>{
-
-time--;
-
-document.getElementById("timer").innerHTML=time;
-
-if(time==0){
-
-clearInterval(countdown);
-
-let message="";
-
-if(score>=20){
-message="🌟LEGEND！\n\n杜真なら最高のプレーができる！🏀❤️";
-}else if(score>=10){
-message="✨MVP！\n\n今日も自分を信じて頑張ってね！";
-}else{
-message="🍀最後まで諦めない気持ちが一番！";
-}
-
-alert(message);
-
-}
-
-},1000);
-
-};
-
-ball.onclick=()=>{
-
-score++;
-
-document.getElementById("score").innerHTML=score+"点";
-
-ball.style.bottom="380px";
-
-setTimeout(()=>{
-ball.style.bottom="20px";
-},350);
-
-}
-
-</script>
 
 </body>
 </html>
