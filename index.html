@@ -9,8 +9,8 @@
 body{
     margin:0;
     background:#0f172a;
+    color:#fff;
     font-family:sans-serif;
-    color:white;
     text-align:center;
 }
 
@@ -19,17 +19,17 @@ h1{
 }
 
 #score{
-    font-size:32px;
-    margin:15px;
+    font-size:30px;
+    margin:10px;
 }
 
 #court{
-    position:relative;
-    width:340px;
-    height:500px;
+    width:320px;
+    height:450px;
     background:#d68b47;
-    margin:0 auto;
+    margin:20px auto;
     border-radius:20px;
+    position:relative;
     overflow:hidden;
     border:5px solid white;
 }
@@ -37,33 +37,56 @@ h1{
 #goal{
     position:absolute;
     top:25px;
-    left:125px;
+    left:120px;
     font-size:70px;
 }
 
 #ball{
     position:absolute;
+    left:130px;
     bottom:20px;
-    left:140px;
     font-size:60px;
     cursor:pointer;
-    transition:bottom .3s ease;
     user-select:none;
 }
 
-p{
-    font-size:18px;
+#card{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+}
+
+#letter{
+    background:white;
+    color:#333;
+    width:300px;
+    padding:25px;
+    border-radius:20px;
+    white-space:pre-line;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 25px;
+    border:none;
+    border-radius:10px;
+    background:#ff69b4;
+    color:white;
+    font-size:16px;
 }
 </style>
-
 </head>
+
 <body>
 
 <h1>🏀 Guardian Charm</h1>
 
 <h2>杜真へ❤️</h2>
 
-<p>3点決めると応援メッセージが届くよ💕</p>
+<p>🏀を3回タップすると応援メッセージが届くよ</p>
 
 <div id="score">0 / 3</div>
 
@@ -72,54 +95,85 @@ p{
     <div id="ball">🏀</div>
 </div>
 
+<div id="card">
+    <div id="letter">
+        <div id="text"></div>
+        <button onclick="closeCard()">閉じる</button>
+    </div>
+</div>
+
 <script>
 
 const ball=document.getElementById("ball");
 const score=document.getElementById("score");
+const card=document.getElementById("card");
+const text=document.getElementById("text");
 
 const messages=[
 
 `🏀 杜真くん♡
 
-今日も応援してるよ❤️
-思いっきり楽しんできてね😊`,
+今日も試合お疲れさま☺️
+
+どんな結果でも
+頑張る杜真くんが一番かっこいいよ❤️
+
+ずっと応援してるよ♡
+
+KANAより`,
 
 `💕
-大好き♡
 
-自分を信じてプレーしてね🏀`,
+自分を信じてプレーしてね😊
+
+私はいつでも杜真くんの味方だよ❤️`,
 
 `🍀
-どんな結果でも
-私にとって一番かっこいいよ❤️`,
 
-`🥰
-試合が終わったら
-いっぱい褒めさせてね💕`,
+緊張したら深呼吸☺️
+
+楽しんできてね🏀💕`,
 
 `❤️
-いつでも味方だからね☺️`,
+
+今日も一番かっこいい杜真くん✨
+
+応援してるよ！`,
 
 `🏆
-今日はきっと大丈夫✨
-応援してるよ🏀`,
+
+試合が終わったら
+いっぱい褒めさせてね🥰`,
 
 `💛
-緊張したら
-私のこと思い出してね🥺❤️`,
+
+大好き♡
+
+今日もファイト🏀`,
 
 `🌈
-笑顔でプレーする杜真くんが
-一番好き☺️`,
 
-`💕
+笑顔でプレーする杜真くんが
+一番素敵☺️❤️`,
+
+`💖
+
+無理しすぎないでね🥺
+
+いつでも応援してるよ💕`,
+
+`✨
+
 頑張る姿を見るたびに
 もっと好きになるよ❤️`,
 
-`💖
+`❤️
+
 杜真くん♡
 
-ファイト！！🏀❤️`
+今日も最高のプレーを！
+
+大好き☺️🏀`
 
 ];
 
@@ -131,29 +185,35 @@ ball.addEventListener("click",()=>{
 
     score.innerHTML=point+" / 3";
 
-    ball.style.bottom="340px";
-
-    setTimeout(()=>{
-        ball.style.bottom="20px";
-    },300);
+    ball.animate([
+        {transform:"translateY(0)"},
+        {transform:"translateY(-280px)"},
+        {transform:"translateY(0)"}
+    ],{
+        duration:500
+    });
 
     if(point>=3){
 
-        const random=Math.floor(Math.random()*messages.length);
+        point=0;
 
         setTimeout(()=>{
 
-            alert(messages[random]);
-
-            point=0;
-
             score.innerHTML="0 / 3";
 
-        },400);
+            text.innerHTML=messages[Math.floor(Math.random()*messages.length)];
+
+            card.style.display="flex";
+
+        },500);
 
     }
 
 });
+
+function closeCard(){
+    card.style.display="none";
+}
 
 </script>
 
