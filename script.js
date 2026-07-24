@@ -166,3 +166,12 @@ function drawConfetti(){
 }
 
 drawConfetti();
+
+function moveBall(){
+
+    if(!gameRunning) return;
+
+    ball.style.left = ballX + "px";
+
+}
+
