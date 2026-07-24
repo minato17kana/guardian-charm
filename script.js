@@ -115,3 +115,53 @@ ball.onclick = ()=>{
     },350);
 
 }
+// ===== 紙吹雪 =====
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function celebrate() {
+
+    for(let i=0;i<80;i++){
+
+        particles.push({
+            x:180,
+            y:120,
+            dx:(Math.random()-0.5)*8,
+            dy:Math.random()*-6,
+            size:Math.random()*6+4,
+            life:60
+        });
+
+    }
+
+}
+
+function drawConfetti(){
+
+    ctx.clearRect(0,0,360,520);
+
+    particles.forEach((p,index)=>{
+
+        p.x+=p.dx;
+        p.y+=p.dy;
+
+        p.dy+=0.15;
+
+        p.life--;
+
+        ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
+        ctx.fillRect(p.x,p.y,p.size,p.size);
+
+        if(p.life<=0){
+            particles.splice(index,1);
+        }
+
+    });
+
+    requestAnimationFrame(drawConfetti);
+
+}
+
+drawConfetti();
