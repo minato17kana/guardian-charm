@@ -2,123 +2,68 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guardian Charm</title>
 
 <style>
 body{
-margin:0;
-background:#0f172a;
-font-family:sans-serif;
-color:white;
-text-align:center;
+    margin:0;
+    background:#0f172a;
+    font-family:sans-serif;
+    color:white;
+    text-align:center;
 }
 
 h1{
-margin-top:30px;
-}
-
-#start{
-margin-top:60px;
-padding:20px 40px;
-font-size:28px;
-border-radius:20px;
-background:#FFD700;
-color:black;
-font-weight:bold;
-border:none;
-}
-
-#game{
-display:none;
-}
-
-#court{
-position:relative;
-margin:20px auto;
-width:350px;
-height:500px;
-background:#d68b47;
-border-radius:20px;
-overflow:hidden;
-}
-
-#goal{
-position:absolute;
-top:20px;
-left:130px;
-font-size:70px;
-}
-
-#ball{
-position:absolute;
-bottom:20px;
-left:145px;
-font-size:55px;
-cursor:pointer;
-transition:.4s;
+    margin-top:20px;
 }
 
 #score{
-font-size:35px;
-margin-top:20px;
+    font-size:32px;
+    margin:15px;
 }
 
-#timer{
-font-size:25px;
+#court{
+    position:relative;
+    width:340px;
+    height:500px;
+    background:#d68b47;
+    margin:0 auto;
+    border-radius:20px;
+    overflow:hidden;
+    border:5px solid white;
+}
+
+#goal{
+    position:absolute;
+    top:25px;
+    left:125px;
+    font-size:70px;
+}
+
+#ball{
+    position:absolute;
+    bottom:20px;
+    left:140px;
+    font-size:60px;
+    cursor:pointer;
+    transition:bottom .3s ease;
+    user-select:none;
+}
+
+p{
+    font-size:18px;
 }
 </style>
+
 </head>
-<script>
-const ball = document.getElementById("ball");
-const scoreText = document.getElementById("score");
-
-const messages = [
-"🏀 杜真くん♡\n\n今日も応援してるよ❤️",
-"💕 大好き！試合楽しんできてね☺️",
-"🍀 自分を信じて頑張ってね！",
-"❤️ 今日も一番かっこいいよ！",
-"🏆 終わったらいっぱい褒めるね🥰",
-"💛 私はいつでも味方だよ。",
-"🌈 笑顔でプレーしてね！",
-"✨ 無理せず楽しんでね！",
-"💕 頑張る杜真くんが大好き。",
-"❤️ ファイト！！🏀"
-];
-
-let score = 0;
-
-ball.onclick = () => {
-
-    score++;
-    scoreText.innerHTML = score + " / 3";
-
-    ball.style.bottom = "350px";
-
-    setTimeout(() => {
-        ball.style.bottom = "20px";
-    }, 300);
-
-    if(score >= 3){
-
-        const random = Math.floor(Math.random() * messages.length);
-
-        setTimeout(() => {
-            alert(messages[random]);
-            score = 0;
-            scoreText.innerHTML = "0 / 3";
-        }, 400);
-
-    }
-
-}
-</script>
 <body>
+
 <h1>🏀 Guardian Charm</h1>
 
-<h2>杜真へ</h2>
+<h2>杜真へ❤️</h2>
 
-<p>3点決めると応援メッセージが届くよ❤️</p>
+<p>3点決めると応援メッセージが届くよ💕</p>
 
 <div id="score">0 / 3</div>
 
@@ -126,6 +71,91 @@ ball.onclick = () => {
     <div id="goal">🧺</div>
     <div id="ball">🏀</div>
 </div>
+
+<script>
+
+const ball=document.getElementById("ball");
+const score=document.getElementById("score");
+
+const messages=[
+
+`🏀 杜真くん♡
+
+今日も応援してるよ❤️
+思いっきり楽しんできてね😊`,
+
+`💕
+大好き♡
+
+自分を信じてプレーしてね🏀`,
+
+`🍀
+どんな結果でも
+私にとって一番かっこいいよ❤️`,
+
+`🥰
+試合が終わったら
+いっぱい褒めさせてね💕`,
+
+`❤️
+いつでも味方だからね☺️`,
+
+`🏆
+今日はきっと大丈夫✨
+応援してるよ🏀`,
+
+`💛
+緊張したら
+私のこと思い出してね🥺❤️`,
+
+`🌈
+笑顔でプレーする杜真くんが
+一番好き☺️`,
+
+`💕
+頑張る姿を見るたびに
+もっと好きになるよ❤️`,
+
+`💖
+杜真くん♡
+
+ファイト！！🏀❤️`
+
+];
+
+let point=0;
+
+ball.addEventListener("click",()=>{
+
+    point++;
+
+    score.innerHTML=point+" / 3";
+
+    ball.style.bottom="340px";
+
+    setTimeout(()=>{
+        ball.style.bottom="20px";
+    },300);
+
+    if(point>=3){
+
+        const random=Math.floor(Math.random()*messages.length);
+
+        setTimeout(()=>{
+
+            alert(messages[random]);
+
+            point=0;
+
+            score.innerHTML="0 / 3";
+
+        },400);
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
