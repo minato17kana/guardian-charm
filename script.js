@@ -20,7 +20,7 @@ start.onclick = () => {
     setInterval(moveGoal, 20);
 
     const timer = setInterval(() => {
-
+        setInterval(moveBall,20);
         time--;
         timerText.innerText = time + " 秒";
 
