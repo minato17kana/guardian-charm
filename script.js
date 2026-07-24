@@ -144,7 +144,18 @@ ball.onclick = ()=>{
         if(Math.abs(ballCenter-goalCenter)<40){
 
             score++;
+            celebrate();
             scoreText.innerText = "🏀 " + score + " 点";
+
+            if(score === 3){
+
+             const random = Math.floor(Math.random()*supportMessages.length);
+
+             setTimeout(()=>{
+              alert(supportMessages[random]);
+             },500);
+
+            }
 
             document.getElementById("message").innerText="SWISH!! ✨";
 
