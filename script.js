@@ -1,4 +1,4 @@
-let ballX = 145;
+const ballCenter = ballX;
 const start = document.getElementById("start");
 const game = document.getElementById("game");
 const ball = document.getElementById("ball");
