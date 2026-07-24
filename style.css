@@ -1,102 +1,36 @@
-
 body{
     margin:0;
-    background:linear-gradient(#87CEEB,#dff6ff);
-    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    font-family:sans-serif;
     text-align:center;
-    overflow:hidden;
-}
-
-h1{
-    color:white;
-    text-shadow:2px 2px 5px black;
-    margin-top:20px;
-}
-
-h2{
-    color:white;
-}
-
-#start{
-    margin-top:40px;
-    padding:18px 45px;
-    font-size:28px;
-    border:none;
-    border-radius:40px;
-    background:#ffcc00;
-    font-weight:bold;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
-
-#start:active{
-    transform:scale(.95);
-}
-
-#game{
-    display:none;
-}
-
-#score{
-    font-size:30px;
-    color:white;
-    margin-top:10px;
-}
-
-#timer{
-    font-size:26px;
-    color:white;
 }
 
 #court{
-    position:relative;
-    width:360px;
-    height:520px;
+    width:320px;
+    height:450px;
+    background:#d68b47;
     margin:20px auto;
-    background:#c97d3f;
     border-radius:20px;
-    border:6px solid white;
-    overflow:hidden;
+    position:relative;
 }
 
 #goal{
     position:absolute;
-    top:80px;
-    left:120px;
+    top:30px;
+    left:125px;
     font-size:70px;
-    transition:left .08s linear;
 }
 
 #ball{
     position:absolute;
-    bottom:25px;
-    left:145px;
+    bottom:20px;
+    left:130px;
     font-size:60px;
     cursor:pointer;
-    transition:.35s;
 }
 
-#message{
-    font-size:28px;
-    color:yellow;
-    font-weight:bold;
-    margin-top:10px;
-    height:40px;
-}
-
-#retry{
-    display:none;
+#score{
+    font-size:32px;
     margin-top:20px;
-    padding:15px 35px;
-    border:none;
-    border-radius:30px;
-    font-size:22px;
-    background:#00d26a;
-    color:white;
-}
-
-canvas{
-    position:absolute;
-    left:0;
-    top:0;
-    pointer-events:none;
 }
