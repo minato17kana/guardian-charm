@@ -191,25 +191,30 @@ function rightMove(){
 
 }
 
-// スワイプでボール移動
-let startX = 0;
+let dragging = false;
 
-ball.addEventListener("touchstart",(e)=>{
-    startX = e.touches[0].clientX;
+ball.addEventListener("touchstart", (e) => {
+    dragging = true;
 });
 
-ball.addEventListener("touchmove",(e)=>{
+document.addEventListener("touchmove", (e) => {
 
-    let moveX = e.touches[0].clientX;
-    let diff = moveX - startX;
+    if (!dragging || !gameRunning) return;
 
-    ballX += diff * 0.2;
+    let x = e.touches[0].clientX;
 
-    if(ballX < 20) ballX = 20;
-    if(ballX > 290) ballX = 290;
+    const court = document.getElementById("court");
+    const rect = court.getBoundingClientRect();
+
+    ballX = x - rect.left - 30;
+
+    if(ballX < 10) ballX = 10;
+    if(ballX > 300) ballX = 300;
 
     ball.style.left = ballX + "px";
 
-    startX = moveX;
+});
 
+document.addEventListener("touchend", () => {
+    dragging = false;
 });
