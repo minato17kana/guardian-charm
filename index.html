@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guardian Charm</title>
+
+<style>
+body{
+margin:0;
+font-family:sans-serif;
+background:#111827;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+background:#1f2937;
+padding:30px;
+border-radius:20px;
+width:320px;
+text-align:center;
+box-shadow:0 0 20px gold;
+}
+
+button{
+background:#FFD700;
+border:none;
+padding:15px 25px;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+margin-top:20px;
+}
+
+#result{
+margin-top:20px;
+white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>🛡 Guardian Charm</h1>
+
+<h2>杜真</h2>
+
+<p>Lv.1 勝利の挑戦者</p>
+
+<button onclick="blessing()">今日の加護</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const messages=[
+`🏀 勝利の加護
+
+杜真へ
+
+今日まで積み重ねてきた努力は
+必ず力になってる。
+
+思いっきり楽しんできて！
+
+私はいつでも応援してる❤️`,
+
+`🍀 幸運の加護
+
+焦らなくて大丈夫。
+
+仲間を信じて、
+自分を信じて。
+
+今日も最高のプレーを🏀`,
+
+`✨ 勇気の加護
+
+どんな結果でも
+
+頑張る杜真が一番かっこいい😊`
+];
+
+function blessing(){
+
+const random=Math.floor(Math.random()*messages.length);
+
+document.getElementById("result").innerHTML=messages[random];
+
+}
+
+</script>
+
+</body>
+</html>
