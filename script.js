@@ -190,3 +190,26 @@ function rightMove(){
     }
 
 }
+
+// スワイプでボール移動
+let startX = 0;
+
+ball.addEventListener("touchstart",(e)=>{
+    startX = e.touches[0].clientX;
+});
+
+ball.addEventListener("touchmove",(e)=>{
+
+    let moveX = e.touches[0].clientX;
+    let diff = moveX - startX;
+
+    ballX += diff * 0.2;
+
+    if(ballX < 20) ballX = 20;
+    if(ballX > 290) ballX = 290;
+
+    ball.style.left = ballX + "px";
+
+    startX = moveX;
+
+});
