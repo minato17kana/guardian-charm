@@ -175,3 +175,18 @@ function moveBall(){
 
 }
 
+function leftMove(){
+
+    if(ballX > 20){
+        ballX -= 20;
+    }
+
+}
+
+function rightMove(){
+
+    if(ballX < 290){
+        ballX += 20;
+    }
+
+}
