@@ -2,97 +2,151 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Guardian Charm</title>
 
 <style>
 body{
 margin:0;
+background:#0f172a;
 font-family:sans-serif;
-background:#111827;
 color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-
-.card{
-background:#1f2937;
-padding:30px;
-border-radius:20px;
-width:320px;
 text-align:center;
-box-shadow:0 0 20px gold;
 }
 
-button{
+h1{
+margin-top:30px;
+}
+
+#start{
+margin-top:60px;
+padding:20px 40px;
+font-size:28px;
+border-radius:20px;
 background:#FFD700;
-border:none;
-padding:15px 25px;
-border-radius:12px;
-font-size:18px;
+color:black;
 font-weight:bold;
+border:none;
+}
+
+#game{
+display:none;
+}
+
+#court{
+position:relative;
+margin:20px auto;
+width:350px;
+height:500px;
+background:#d68b47;
+border-radius:20px;
+overflow:hidden;
+}
+
+#goal{
+position:absolute;
+top:20px;
+left:130px;
+font-size:70px;
+}
+
+#ball{
+position:absolute;
+bottom:20px;
+left:145px;
+font-size:55px;
+cursor:pointer;
+transition:.4s;
+}
+
+#score{
+font-size:35px;
 margin-top:20px;
 }
 
-#result{
-margin-top:20px;
-white-space:pre-line;
+#timer{
+font-size:25px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-<h1>🛡 Guardian Charm</h1>
+<h1>🏀 Guardian Charm</h1>
 
 <h2>杜真</h2>
 
-<p>Lv.1 勝利の挑戦者</p>
+<button id="start">TAP HERE</button>
 
-<button onclick="blessing()">今日の加護</button>
+<div id="game">
 
-<div id="result"></div>
+<h2 id="timer">30</h2>
+
+<div id="score">0点</div>
+
+<div id="court">
+
+<div id="goal">🧺</div>
+
+<div id="ball">🏀</div>
+
+</div>
 
 </div>
 
 <script>
 
-const messages=[
-`🏀 勝利の加護
+let score=0;
+let time=30;
 
-杜真へ
+const start=document.getElementById("start");
+const game=document.getElementById("game");
+const ball=document.getElementById("ball");
 
-今日まで積み重ねてきた努力は
-必ず力になってる。
+start.onclick=()=>{
 
-思いっきり楽しんできて！
+start.style.display="none";
+game.style.display="block";
 
-私はいつでも応援してる❤️`,
+const countdown=setInterval(()=>{
 
-`🍀 幸運の加護
+time--;
 
-焦らなくて大丈夫。
+document.getElementById("timer").innerHTML=time;
 
-仲間を信じて、
-自分を信じて。
+if(time==0){
 
-今日も最高のプレーを🏀`,
+clearInterval(countdown);
 
-`✨ 勇気の加護
+let message="";
 
-どんな結果でも
+if(score>=20){
+message="🌟LEGEND！\n\n杜真なら最高のプレーができる！🏀❤️";
+}else if(score>=10){
+message="✨MVP！\n\n今日も自分を信じて頑張ってね！";
+}else{
+message="🍀最後まで諦めない気持ちが一番！";
+}
 
-頑張る杜真が一番かっこいい😊`
-];
+alert(message);
 
-function blessing(){
+}
 
-const random=Math.floor(Math.random()*messages.length);
+},1000);
 
-document.getElementById("result").innerHTML=messages[random];
+};
+
+ball.onclick=()=>{
+
+score++;
+
+document.getElementById("score").innerHTML=score+"点";
+
+ball.style.bottom="380px";
+
+setTimeout(()=>{
+ball.style.bottom="20px";
+},350);
 
 }
 
